@@ -240,7 +240,6 @@ autocmd Filetype slim setlocal ts=2 sw=2 expandtab
 
 " Prettier
 let g:neoformat_try_node_exe = 1
-autocmd BufWritePre,TextChanged,InsertLeave *.js, *.jsx, *.ts, *.tsx Neoformat
 
 autocmd FileType javascript, javascriptreact setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
 " Use formatprg when available
@@ -261,7 +260,7 @@ let g:airline#extensions#ale#enabled = 1
 
 autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
+nnoremap gp :silent %!prettier --stdin-filepath %<CR>
 " Javascript
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-v>"
